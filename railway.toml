@@ -1,5 +1,0 @@
-[build]
-builder = "raw"
-
-[build.args]
-python = "3.11.6"
