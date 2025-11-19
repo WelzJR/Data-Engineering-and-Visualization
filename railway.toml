@@ -1,2 +1,5 @@
 [build]
-runtime = "python@3.11.6"
+builder = "raw"
+
+[build.args]
+python = "3.11.6"
