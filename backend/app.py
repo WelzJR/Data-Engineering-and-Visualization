@@ -11,12 +11,25 @@ CORS(app)
 
 # Load data
 import os
-csv_path = os.path.join(os.path.dirname(__file__), "integrated_crashes_for_app.csv")
-if not os.path.exists(csv_path):
-    # Try parent directory if not in backend folder
-    csv_path = os.path.join(os.path.dirname(__file__), "..", "integrated_crashes_for_app.csv")
+
+# Try multiple paths for CSV file
+possible_paths = [
+    os.path.join(os.path.dirname(__file__), "integrated_crashes_for_app.csv"),
+    os.path.join(os.path.dirname(__file__), "..", "integrated_crashes_for_app.csv"),
+    "integrated_crashes_for_app.csv"
+]
+
+csv_path = None
+for path in possible_paths:
+    if os.path.exists(path):
+        csv_path = path
+        break
+
+if csv_path is None:
+    raise FileNotFoundError(f"CSV file not found. Tried: {possible_paths}")
 
 df = pd.read_csv(csv_path, parse_dates=["CRASH_DATE"], low_memory=False)
+print(f"Loaded CSV from: {csv_path}")
 
 # Ensure columns exist
 if "BOROUGH" not in df.columns:
