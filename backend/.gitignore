@@ -25,3 +25,4 @@ env/
 .venv
 .DS_Store
 .env
+.vercel

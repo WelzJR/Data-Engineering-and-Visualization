@@ -1,0 +1,8 @@
+node_modules
+.git
+.env
+*.pyc
+__pycache__
+.DS_Store
+frontend/node_modules
+integrated_crashes_for_app.csv
