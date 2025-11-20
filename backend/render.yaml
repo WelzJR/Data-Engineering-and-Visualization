@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: nyc-crashes-api
+    env: python
+    plan: free
+    buildCommand: bash build.sh
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT

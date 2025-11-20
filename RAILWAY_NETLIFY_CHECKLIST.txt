@@ -1,0 +1,218 @@
+✅ PRE-DEPLOYMENT CHECKLIST FOR RAILWAY + NETLIFY
+═══════════════════════════════════════════════════════════════
+
+## 📦 FILES CHECK
+
+Backend folder (backend/):
+  ☐ app.py ......................... Flask API
+  ☐ requirements.txt ............... dependencies
+  ☐ Procfile ....................... gunicorn config
+  ☐ runtime.txt .................... Python version
+  ☐ .gitignore ..................... git rules
+  ☐ integrated_crashes_for_app.csv . DATA FILE (IMPORTANT!)
+
+Frontend folder (frontend/):
+  ☐ src/App.jsx .................... React component
+  ☐ src/main.jsx ................... Entry point
+  ☐ src/index.css .................. Styling
+  ☐ package.json ................... Dependencies
+  ☐ vite.config.js ................. Build config
+  ☐ netlify.toml ................... Netlify config
+  ☐ index.html ..................... HTML template
+  ☐ .gitignore ..................... git rules
+
+Root folder:
+  ☐ .git/ .......................... Git repository
+  ☐ README.md ...................... Docs
+  ☐ .gitignore ..................... Root git ignore
+
+## 🧪 LOCAL TESTING
+
+Backend:
+  ☐ cd backend
+  ☐ python -m venv venv
+  ☐ venv\Scripts\activate
+  ☐ pip install -r requirements.txt
+  ☐ python app.py
+  ☐ Test http://localhost:5000/api/health ✓
+
+Frontend:
+  ☐ cd frontend
+  ☐ npm install
+  ☐ npm run dev
+  ☐ Test http://localhost:5173 ✓
+  ☐ Filters work
+  ☐ Charts load
+
+Integration:
+  ☐ Frontend connects to backend
+  ☐ No console errors
+  ☐ Generate Report button works
+
+## 🔐 GITHUB SETUP
+
+  ☐ GitHub account created
+  ☐ Repository created (public)
+  ☐ Git initialized locally
+  ☐ All files added
+  ☐ Initial commit created
+  ☐ Remote added
+  ☐ Pushed to main branch
+
+Verify:
+```bash
+git status                    # Should be clean
+git log --oneline            # Should show commits
+git remote -v                # Should show origin
+```
+
+## 🚂 RAILWAY SETUP
+
+Account:
+  ☐ Railway.app account created
+  ☐ GitHub authorized with Railway
+  ☐ Can see your repository
+
+Backend Deployment:
+  ☐ New project created
+  ☐ GitHub repo selected
+  ☐ Python detected
+  ☐ Deployment started
+  ☐ Logs show successful build
+  ☐ Service running (not crashed)
+  ☐ Domains assigned
+  ☐ Backend URL copied (https://your-app.railway.app)
+
+Test Backend:
+```bash
+curl https://your-app.railway.app/api/health
+# Should return: {"status": "ok", ...}
+```
+
+## 🎨 NETLIFY SETUP
+
+Account:
+  ☐ Netlify.com account created
+  ☐ GitHub authorized with Netlify
+  ☐ Can see your repository
+
+Frontend Deployment:
+  ☐ New site created
+  ☐ GitHub repo connected
+  ☐ Build settings correct:
+    - Build: cd frontend && npm install && npm run build
+    - Publish: frontend/dist
+  ☐ Deployment started
+  ☐ Build completed successfully
+  ☐ Site deployed
+  ☐ Frontend URL copied (https://your-site.netlify.app)
+
+Test Frontend:
+```
+Open https://your-site.netlify.app
+Should load without errors
+```
+
+## 🔗 CONNECTION SETUP
+
+Environment Variable:
+  ☐ Netlify Site settings → Build & deploy
+  ☐ Environment variables added
+  ☐ Key: VITE_BACKEND_URL
+  ☐ Value: https://your-app.railway.app (your Railway URL)
+  ☐ Saved successfully
+
+Redeploy:
+  ☐ Netlify → Deploys → Trigger deploy
+  ☐ New build started
+  ☐ Build completed
+  ☐ Site redeployed with env var
+
+## ✅ FINAL VERIFICATION
+
+Backend Test:
+  ☐ GET https://your-app.railway.app/api/health
+    Response: {"status": "ok", ...}
+  
+  ☐ GET https://your-app.railway.app/api/filters
+    Response: {boroughs: [...], years: [...], ...}
+
+Frontend Test:
+  ☐ Open https://your-site.netlify.app
+  ☐ Page loads (no 404)
+  ☐ Filters visible
+  ☐ Search box visible
+  ☐ Generate Report button visible
+
+Integration Test:
+  ☐ Click borough dropdown → loads
+  ☐ Click year dropdown → loads
+  ☐ Type in search → no errors
+  ☐ Click Generate Report → charts load
+  ☐ Summary stats show numbers
+
+Browser Console (F12):
+  ☐ No red errors
+  ☐ No network errors (404, 500)
+  ☐ No CORS errors
+  ☐ Warnings only (if any)
+
+## 🎉 SUCCESS CRITERIA
+
+Everything is working if:
+  ✓ Backend URL responds to API calls
+  ✓ Frontend loads without errors
+  ✓ Frontend connects to backend
+  ✓ Filters work
+  ✓ Charts render
+  ✓ Summary stats display
+  ✓ No console errors
+  ✓ Mobile layout works
+
+## 🚀 READY TO DEPLOY?
+
+If all items are checked:
+  ✅ You're ready to go live!
+
+If any items are unchecked:
+  ⚠️ Fix them before proceeding
+
+═══════════════════════════════════════════════════════════════
+
+## 📝 DEPLOYMENT STEPS SUMMARY
+
+1. Git push
+   git add .
+   git commit -m "Ready for deployment"
+   git push -u origin main
+
+2. Railway deploy
+   Visit railway.app
+   Deploy from GitHub
+   Wait 2-3 min
+   Copy backend URL
+
+3. Netlify deploy
+   Visit netlify.com
+   Import project
+   Set build commands
+   Wait 2-3 min
+   Copy frontend URL
+
+4. Connect URLs
+   Add VITE_BACKEND_URL env var in Netlify
+   Trigger redeploy
+   Wait 1-2 min
+
+5. Test
+   Curl backend /api/health
+   Open frontend URL
+   Test features
+
+═══════════════════════════════════════════════════════════════
+
+TOTAL TIME: 20 minutes
+
+You're good to go! 🚀
+
+═══════════════════════════════════════════════════════════════
