@@ -65,6 +65,8 @@ Team Members & Contributions:
 
 [Ali Waleed] – Data Exploration , Data Cleaning  , pre and post Data Integration , Website implementation 
 Abdelrahman   ---  * Questions 
+Mohamed Emad - Data Exploration and all visualizations 
+
 
 
 
